@@ -18,3 +18,19 @@ services:
       - 'POSTGRES_PASSWORD=secret'
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_DB=btc_mining_db'
+  btc_mining_command:
+    image: 'btc-mining-command:1.0'
+    container_name: 'btc-mining-command'
+    ports:
+      - '8081:8081'
+    depends_on:
+      - btc_mining_db
+      - axonserver
+    command: mvn clean spring-boot:run
+    # Pass environment variables to the service
+    environment:
+      ACTIVE_PROFILE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://btc_mining_db:5432/btc_mining_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: secret
+      AXON_AXONSERVER_SERVERS: 'axonserver:8124'
