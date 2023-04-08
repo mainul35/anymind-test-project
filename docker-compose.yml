@@ -7,3 +7,14 @@ services:
       - "8124:8124"
     volumes:
       - ./data:/data
+  btc_mining_db:
+    image: 'postgres'
+    container_name: 'btc_mining_db_container'
+    volumes:
+        - ./data:/data
+    ports:
+      - '5433:5432'
+    environment:
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_DB=btc_mining_db'

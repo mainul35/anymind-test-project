@@ -13,7 +13,7 @@ public class Transaction {
 
     @Id
     private String transactionId;
-
+    private String walletId;
     private OffsetDateTime datetime;
     private BigDecimal amount;
 
