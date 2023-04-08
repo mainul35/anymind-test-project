@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 
 @Data
 public class SaveBtcRequestModel {
+    private String walletId;
     private OffsetDateTime datetime;
     private BigDecimal amount;
 }

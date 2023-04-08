@@ -19,7 +19,6 @@ public class TransactionAggregate {
     private String walletId;
     @AggregateIdentifier
     private String transactionId;
-
     private OffsetDateTime datetime;
     private BigDecimal amount;
 
@@ -27,12 +26,9 @@ public class TransactionAggregate {
 
     @CommandHandler
     public TransactionAggregate(AddBtcTransactionCommand addBtcTransactionCommand) {
-        //You can perform all the validations
         AddBtcEvent productCreatedEvent =
                 new AddBtcEvent();
-
         BeanUtils.copyProperties(addBtcTransactionCommand,productCreatedEvent);
-
         AggregateLifecycle.apply(productCreatedEvent);
     }
 
@@ -40,6 +36,7 @@ public class TransactionAggregate {
     public void on(AddBtcEvent addBtcEvent) {
         this.amount = addBtcEvent.getAmount();
         this.transactionId = addBtcEvent.getTransactionId();
+        this.walletId = addBtcEvent.getWalletId();
         this.amount = addBtcEvent.getAmount();
         this.datetime = addBtcEvent.getDatetime();
     }

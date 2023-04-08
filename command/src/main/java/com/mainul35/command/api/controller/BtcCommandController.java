@@ -26,6 +26,7 @@ public class BtcCommandController {
         var cmd = AddBtcTransactionCommand.builder()
                 .transactionId(UUID.randomUUID().toString())
                 .amount(model.getAmount())
+                .walletId(model.getWalletId())
                 .datetime(model.getDatetime())
                 .build();
 
