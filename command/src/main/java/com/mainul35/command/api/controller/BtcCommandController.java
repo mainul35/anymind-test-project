@@ -1,7 +1,9 @@
 package com.mainul35.command.api.controller;
 
 import com.mainul35.command.api.command.AddBtcTransactionCommand;
+import com.mainul35.command.api.data.Transaction;
 import com.mainul35.command.api.model.SaveBtcRequestModel;
+import com.mainul35.command.api.model.SaveBtcResponseModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class BtcCommandController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> addProduct(@RequestBody SaveBtcRequestModel model) {
+    public ResponseEntity<SaveBtcResponseModel> addProduct(@RequestBody SaveBtcRequestModel model) {
         var cmd = AddBtcTransactionCommand.builder()
                 .transactionId(UUID.randomUUID().toString())
                 .amount(model.getAmount())
@@ -31,6 +33,9 @@ public class BtcCommandController {
                 .build();
 
         String result = commandGateway.sendAndWait(cmd);
-        return ResponseEntity.ok("Transaction request submitted with Transaction ID=".concat(result));
+        var resp = new SaveBtcResponseModel();
+        resp.setTransactionId(result);
+        resp.setTransactionStatus(String.valueOf(SaveBtcResponseModel.TransactionStatus.SUBMITTED));
+        return ResponseEntity.ok(resp);
     }
 }
