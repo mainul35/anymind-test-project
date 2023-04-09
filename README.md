@@ -1,7 +1,7 @@
 # anymind-test-project
 
 ## High Level Architectural diagram
-![High level architecture](diagrams/BTC Mining system high level architecture.png)
+![High level architecture](images/BTC Mining system high level architecture.png)
 
 ## Assumptions
 - Since Wallet and time zones were mentioned, but from request model it was not clear that if an wallet entity should exists, I didn't keep Wallet as the Aggregate, instead I kept the Transaction as the aggregate
@@ -19,7 +19,7 @@ Once the database and other services are up and running by docker compose, use t
 
 The Password is: ```secret```
 
-![DB client connection parameters](img.png)
+![DB client connection parameters](images/img.png)
 
 ## Create View table in case it is not automatically created
 
@@ -41,9 +41,9 @@ Postman Collection has been attached in the directory ```./postman-collection```
 
 #### Add BTC
 
-![Add BTC Request-response in Postman](img_1.png)
+![Add BTC Request-response in Postman](images/img_1.png)
 
 
 #### Find Sum History between dates (by hour)
 
-![Find Sum History between dates (by hour) Request-response in Postman](img_2.png)
+![Find Sum History between dates (by hour) Request-response in Postman](images/img_2.png)
