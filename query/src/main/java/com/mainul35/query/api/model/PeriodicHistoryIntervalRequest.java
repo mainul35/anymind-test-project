@@ -1,10 +1,10 @@
 package com.mainul35.query.api.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.ZonedDateTime;
-
-@Data
+@Getter
+@Setter
 public class PeriodicHistoryIntervalRequest {
     private String startDatetime;
     private String endDatetime;
