@@ -1,21 +1,22 @@
-package com.mainul35.command.api.events;
+package com.mainul35.query.api.event;
 
-import com.mainul35.command.api.data.Transaction;
-import com.mainul35.command.api.data.TransactionRepository;
+import com.mainul35.query.api.entity.Transaction;
+import com.mainul35.common.event.AddBtcTransactionEvent;
+import com.mainul35.query.api.repository.TransactionRepository;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddBtcEventHandler {
+public class AddTransactionEventHandler {
         private final TransactionRepository transactionRepository;
 
-        public AddBtcEventHandler(TransactionRepository transactionRepository) {
+        public AddTransactionEventHandler(TransactionRepository transactionRepository) {
                 this.transactionRepository = transactionRepository;
         }
 
         @EventHandler
-        public void on(AddBtcEvent event) {
+        public void on(AddBtcTransactionEvent event) {
                 var transaction = new Transaction();
                 BeanUtils.copyProperties(event, transaction);
                 transactionRepository.save(transaction);

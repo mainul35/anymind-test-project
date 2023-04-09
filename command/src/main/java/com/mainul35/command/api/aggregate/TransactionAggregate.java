@@ -1,17 +1,16 @@
 package com.mainul35.command.api.aggregate;
 
 import com.mainul35.command.api.command.AddBtcTransactionCommand;
-import com.mainul35.command.api.events.AddBtcEvent;
+import com.mainul35.common.event.AddBtcTransactionEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 
 @Aggregate
 public class TransactionAggregate {
@@ -19,21 +18,21 @@ public class TransactionAggregate {
     private String walletId;
     @AggregateIdentifier
     private String transactionId;
-    private OffsetDateTime datetime;
+    private ZonedDateTime datetime;
     private BigDecimal amount;
 
     public TransactionAggregate () {}
 
     @CommandHandler
     public TransactionAggregate(AddBtcTransactionCommand addBtcTransactionCommand) {
-        AddBtcEvent productCreatedEvent =
-                new AddBtcEvent();
-        BeanUtils.copyProperties(addBtcTransactionCommand,productCreatedEvent);
-        AggregateLifecycle.apply(productCreatedEvent);
+        AddBtcTransactionEvent addBtcTransactionEvent =
+                new AddBtcTransactionEvent();
+        BeanUtils.copyProperties(addBtcTransactionCommand,addBtcTransactionEvent);
+        AggregateLifecycle.apply(addBtcTransactionEvent);
     }
 
     @EventSourcingHandler
-    public void on(AddBtcEvent addBtcEvent) {
+    public void on(AddBtcTransactionEvent addBtcEvent) {
         this.amount = addBtcEvent.getAmount();
         this.transactionId = addBtcEvent.getTransactionId();
         this.walletId = addBtcEvent.getWalletId();

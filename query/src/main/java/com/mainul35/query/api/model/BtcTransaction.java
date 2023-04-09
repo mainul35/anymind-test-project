@@ -1,13 +1,14 @@
-package com.mainul35.command.api.model;
+package com.mainul35.query.api.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
 @Data
-public class SaveBtcRequestModel {
-    private String walletId;
+@Builder
+public class BtcTransaction {
     private ZonedDateTime datetime;
     private BigDecimal amount;
 }

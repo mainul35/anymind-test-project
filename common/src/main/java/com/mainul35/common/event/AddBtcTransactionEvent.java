@@ -1,15 +1,14 @@
-package com.mainul35.command.api.events;
+package com.mainul35.common.event;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 
 @Data
-public class AddBtcEvent {
+public class AddBtcTransactionEvent {
     private String transactionId;
     private String walletId;
-    private OffsetDateTime datetime;
+    private ZonedDateTime datetime;
     private BigDecimal amount;
-
 }

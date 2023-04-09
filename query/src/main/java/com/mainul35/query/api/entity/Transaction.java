@@ -1,11 +1,11 @@
-package com.mainul35.command.api.data;
+package com.mainul35.query.api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 
 @Data
 @Entity
@@ -14,7 +14,6 @@ public class Transaction {
     @Id
     private String transactionId;
     private String walletId;
-    private OffsetDateTime datetime;
+    private ZonedDateTime datetime;
     private BigDecimal amount;
-
 }
