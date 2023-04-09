@@ -19,10 +19,22 @@ services:
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_DB=btc_mining_db'
   btc_mining_command:
-    image: 'btc-mining-command:1.0'
+    image: 'mainul35/btc-mining-command:1.0'
     container_name: 'btc-mining-command'
     ports:
       - '8081:8081'
+    depends_on:
+      - axonserver
+    command: mvn clean spring-boot:run
+    # Pass environment variables to the service
+    environment:
+      ACTIVE_PROFILE: docker
+      AXON_AXONSERVER_SERVERS: 'axonserver:8124'
+  btc_mining_query:
+    image: 'mainul35/btc-mining-query:1.0'
+    container_name: 'btc-mining-query'
+    ports:
+      - '8082:8082'
     depends_on:
       - btc_mining_db
       - axonserver
