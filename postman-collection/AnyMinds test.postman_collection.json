@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "e9df39e4-7580-4e47-b3e4-a824893d09b6",
+		"name": "AnyMinds test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "710567"
+	},
+	"item": [
+		{
+			"name": "Add BTC",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"12345\",\r\n    \"datetime\": \"2021-03-08T12:30:01+01:00\",\r\n    \"amount\": 10.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find sum history between dates (hourly)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startDatetime\": \"2019-10-05T13:00:00+00:00\",\r\n    \"endDatetime\": \"2023-03-07T19:00:00+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/wallet/12345/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"wallet",
+						"12345",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
