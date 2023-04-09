@@ -1,7 +1,8 @@
 # anymind-test-project
 
 ## High Level Architectural diagram
-![High level architecture](images/BTC Mining system high level architecture.png)
+
+![High level Architectural Diagram](images/BTC Mining system high level architecture.png)
 
 ## Assumptions
 - Since Wallet and time zones were mentioned, but from request model it was not clear that if an wallet entity should exists, I didn't keep Wallet as the Aggregate, instead I kept the Transaction as the aggregate
