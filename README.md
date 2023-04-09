@@ -7,6 +7,10 @@
 - Since Wallet and time zones were mentioned, but from request model it was not clear that if an wallet entity should exists, I didn't keep Wallet as the Aggregate, instead I kept the Transaction as the aggregate
 - But I kept walletId just to explain that I had this in mind
 
+## Further Improvement
+- Can be added pagination for the Sum History between dates
+- Sum history can be based on monthly sum, weekly sum etc. We will need to add view tables and request param to pass for the intervalType
+
 ## Run the application
 From the root directory where the docker-compose.yml file exists, run ```docker-compose up```
 
